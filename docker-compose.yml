@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  main:
+    build: ./main
+    restart: always
+    privileged: true
+    network_mode: host
+    labels:
+      io.balena.features.balena-api: '1' # necessary to discover services
+      io.balena.features.supervisor-api: '1' # necessary to discover services in local mode
+    environment:
+      - STATE=2
+      - BALENA_FLEET_NAME="Ryan's Office"
+    ports:
+      - '80'

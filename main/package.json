@@ -1,0 +1,32 @@
+{
+  "name": "data-collector",
+  "version": "1.0.0",
+  "description": "Backend for the balenaHealth hub project.",
+  "license": "Apache-2.0",
+  "author": "Ryan Hampton <ryanh@balena.io>",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint . --config .eslintrc.json",
+    "lint:fix": "eslint  . --config .eslintrc.json --fix",
+    "clean": "rimraf node_modules"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhampt/office-notice-board.git"
+  },
+  "engineStrict": true,
+  "engines": {
+    "node": ">=16.17.0",
+    "npm": ">=8.15.0"
+  },
+  "dependencies": {
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.4.1"
+  }
+}

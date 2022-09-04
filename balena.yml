@@ -1,0 +1,25 @@
+name: office-notice-board
+type: sw.application
+description: >-
+  TBD
+joinable: false
+post-provisioning: >-
+  Check out the [Office Notice Board GitHub repo's Readme](https://github.com/rhampt/office-notice-board/blob/main/README.md).
+assets:
+  repository:
+    type: blob.asset
+    data:
+      url: 'https://github.com/rhampt/office-notice-board'
+  logo:
+    type: blob.asset
+    data:
+      url: >-
+        https://raw.githubusercontent.com/rhampt/office-notice-board/main/images/logo.png
+data:
+  applicationEnvironmentVariables:
+    - STATE: 1
+    - BALENA_FLEET_NAME: "Ryan's Office"
+  defaultDeviceType: raspberrypi3-64
+  supportedDeviceTypes:
+    - raspberrypi4-64
+    - raspberrypi3-64

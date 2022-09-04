@@ -21,7 +21,19 @@ It may support others—please let me know if you test on another device!
 
 ## System Overview
 
-## `main` service
+## Fleet Variables
+
+KIOSK=1
+LAUNCH_URL=''
+PERSISTENT=1
+
+## `backend-server` service
+
+## `sign-server` service
+
+## `browser` service
+
+## `fbcp` service
 
 ## Getting Help
 

@@ -1,16 +1,25 @@
 version: '2'
-
 services:
-  main:
-    build: ./main
+  backend-server:
+    build: ./backend-server
+    restart: always
+    ports:
+      - '80:80'
+  sign-server:
+    build: ./sign-server
+    restart: always
+    ports:
+      - '82:82'
+  browser:
+    build: ./browser
     restart: always
     privileged: true
     network_mode: host
-    labels:
-      io.balena.features.balena-api: '1' # necessary to discover services
-      io.balena.features.supervisor-api: '1' # necessary to discover services in local mode
-    environment:
-      - STATE=2
-      - BALENA_FLEET_NAME="Ryan's Office"
-    ports:
-      - '80'
+  fbcp:
+    build: ./fbcp
+    restart: on-failure
+    privileged: true
+  # scheduler:
+  #   restart: always
+  #   build: ./scheduler
+  #   privileged: true

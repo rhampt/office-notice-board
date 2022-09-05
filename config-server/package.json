@@ -4,7 +4,6 @@
   "description": "My notice board configuration server",
   "license": "Apache-2.0",
   "author": "Ryan Hampton <ryanh@balena.io>",
-  "main": "config-server.js",
   "private": true,
   "scripts": {
     "start": "node config-server.js"

@@ -1,7 +1,7 @@
 version: '2'
 services:
-  config:
-    build: ./config
+  config-server:
+    build: ./config-server
     restart: always
     ports:
       - '80:80'
@@ -9,12 +9,7 @@ services:
     build: ./display
     restart: always
     ports:
-      - '82:82'
-  api:
-    build: ./api
-    restart: always
-    ports:
-      - '84:84'
+      - '3000:3000'
   browser:
     build: ./browser
     restart: always

@@ -1,0 +1,17 @@
+{
+  "name": "config-server",
+  "version": "1.0.0",
+  "description": "My notice board configuration server",
+  "license": "Apache-2.0",
+  "author": "Ryan Hampton <ryanh@balena.io>",
+  "main": "config-server.js",
+  "private": true,
+  "scripts": {
+    "start": "node config-server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "~4.17.1",
+    "serve-favicon": "~2.5.0"
+  }
+}

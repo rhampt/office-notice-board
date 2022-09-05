@@ -37,21 +37,6 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  // React.useEffect(() => {
-  //   console.log(`initializing interval`);
-  //   const interval = setInterval(() => {
-  //     stateSet({
-  //       ...state,
-  //       timestamp: new Date().toLocaleString('en-US', dateFormat),
-  //     });
-  //   }, 1000);
-
-  //   return () => {
-  //     console.log(`clearing interval`);
-  //     clearInterval(interval);
-  //   };
-  // }, [state]);
-
   return (
     <div className="App">
       <header className="App-header">

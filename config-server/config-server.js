@@ -23,7 +23,7 @@ app.use(function (req, res, next) {
 });
 
 let stateID = 0;
-let states = ['state 0', 'state 1', 'state 2'];
+let states = ['state 0', 'state 1', 'state 2', 'state 3'];
 
 // reply to request with the hello world html file
 app.get('/', function (req, res) {
@@ -37,12 +37,8 @@ app.get('/state', (req, res) => {
 app.post('/send', function (req, res) {
   stateID = req.body.newState;
   console.log('newState: ' + states[stateID]);
+  res.send('State changed to ' + states[stateID]);
 });
-
-// app.post('/state', function (req, res) {
-//   state = req.params.state;
-//   res.send('POST request to state' + JSON.stringify(req));
-// });
 
 // start a server on port 80 and log its start to our console
 app.listen(PORT, () => {

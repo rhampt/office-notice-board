@@ -7,12 +7,15 @@ Summary TBD
 Software:
 
 - Nicely format config and display websites
-  - Config: Set text to API server (should see it on display now)
-  - Set states from dropdown or custom text
+- Fix: Display doesn't show the correct time on the RPi
+- Set four states in dropdown w/ text only to select between them
   - Four states: On call (dnd), working, not home, custom text/drawing (bring me cookies)
+- Display should be smart enough to check for state changes even if config server restarts
 - Cleanup code
 - Readme update
 - Figure out scheduler and backlight timer stuff
+
+With localmode enabled: `balena push 135c5f2.local --env KIOSK=1 PERSISTENT=1 LAUNCH_URL='http://localhost:3000'`
 
 Hardware & Mounting:
 

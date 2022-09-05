@@ -1,6 +1,6 @@
 # Office Notice Board
 
-Summary TBD
+[Device in Dashboard](https://dashboard.balena-cloud.com/devices/135c5f281819ff31d8c1d3484460159a)
 
 ## Todo
 

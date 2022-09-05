@@ -7,10 +7,8 @@ Summary TBD
 Software:
 
 - Nicely format config and display websites
-- Fix: Display doesn't show the correct time on the RPi
-- Set four states in dropdown w/ text only to select between them
-  - Four states: On call (dnd), working, not home, custom text/drawing (bring me cookies)
-- Display should be smart enough to check for state changes even if config server restarts
+- Set five states in dropdown w/ text only to select between them
+  - Plus a custom message and image area
 - Cleanup code
 - Readme update
 - Figure out scheduler and backlight timer stuff

@@ -23,7 +23,15 @@ app.use(function (req, res, next) {
 });
 
 let stateID = 0;
-let states = ['state 0', 'state 1', 'state 2', 'state 3'];
+const states = ['Unknown', 'Here — Do not disturb', 'Here — available', 'Not here', 'Bring me cookies :)'];
+const dateFormat = {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+};
 
 // reply to request with the hello world html file
 app.get('/', function (req, res) {
@@ -31,13 +39,19 @@ app.get('/', function (req, res) {
 });
 
 app.get('/state', (req, res) => {
-  res.send(JSON.stringify({ stateID: stateID, text: states[stateID] }));
+  res.send(
+    JSON.stringify({
+      stateID: stateID,
+      text: states[stateID],
+      timestamp: new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }, dateFormat),
+    })
+  );
 });
 
 app.post('/send', function (req, res) {
   stateID = req.body.newState;
-  console.log('newState: ' + states[stateID]);
-  res.send('State changed to ' + states[stateID]);
+  console.log('State changed to: ' + states[stateID]);
+  res.send('State changed to: ' + states[stateID]);
 });
 
 // start a server on port 80 and log its start to our console

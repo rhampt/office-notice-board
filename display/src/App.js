@@ -2,40 +2,28 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 
-const dateFormat = {
-  year: 'numeric',
-  month: '2-digit',
-  day: '2-digit',
-  hour: '2-digit',
-  minute: '2-digit',
-  second: '2-digit',
-};
-
 function App() {
-  const [state, stateSet] = React.useState([{ stateID: 0, text: 'init', timestamp: 'Null' }]);
+  const [state, stateSet] = React.useState([{ stateID: -1, text: 'INIT', timestamp: 'NULL' }]);
 
   React.useEffect(() => {
     async function fetchState() {
-      const fullResponse = await fetch('http://localhost:80/state');
-      const responseJson = await fullResponse.json();
-
-      const newState = {
-        stateID: responseJson.stateID,
-        text: responseJson.text,
-        timestamp: new Date().toLocaleString('en-US', dateFormat),
-      };
-
-      stateSet(newState);
+      try {
+        const fullResponse = await fetch('http://localhost:80/state');
+        const responseJson = await fullResponse.json();
+        stateSet(responseJson);
+      } catch {
+        stateSet({
+          stateID: -1,
+          text: 'Unable to connect to the config server',
+          timestamp: '',
+        });
+      }
     }
-    fetchState();
-  }, [state]);
-
-  React.useEffect(() => {
     const interval = setInterval(() => {
-      console.log('This will run every second!');
+      fetchState();
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [state]);
 
   return (
     <div className="App">

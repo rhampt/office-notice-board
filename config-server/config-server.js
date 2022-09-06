@@ -23,7 +23,8 @@ app.use(function (req, res, next) {
 });
 
 let stateID = 0;
-const states = ['Unknown', 'Here — Do not disturb', 'Here — available', 'Not here', 'Bring me cookies :)'];
+let customMessage = 'Bring me cookies :)';
+const states = ['Unknown', 'Do Not Disturb', 'Available', 'Not Home', 'Bring me cookies :)'];
 const colors = ['#f8fb61', '#fb6161', '#9df951', '#fb6161', '#9df951'];
 const dateFormat = {
   year: 'numeric',
@@ -34,7 +35,6 @@ const dateFormat = {
   second: '2-digit',
 };
 
-// reply to request with the hello world html file
 app.get('/', function (req, res) {
   res.sendFile(join(__dirname, 'views', 'index.html'));
 });
@@ -43,17 +43,24 @@ app.get('/state', (req, res) => {
   res.send(
     JSON.stringify({
       stateID: stateID,
-      text: states[stateID],
+      text: stateID === 4 ? customMessage : states[stateID],
       color: colors[stateID],
       timestamp: `${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }, dateFormat)} (Online)`,
     })
   );
 });
 
-app.post('/send', function (req, res) {
+app.post('/send-state', function (req, res) {
   stateID = req.body.newState;
   console.log('State changed to: ' + states[stateID]);
-  res.send('State changed to: ' + states[stateID]);
+  res.status(204).send('State changed to: ' + states[stateID]);
+});
+
+app.post('/send-custom', function (req, res) {
+  stateID = 4;
+  customMessage = req.body.customMessage;
+  console.log('State changed to: ' + customMessage);
+  res.status(204).send('State changed to: ' + customMessage);
 });
 
 // start a server on port 80 and log its start to our console

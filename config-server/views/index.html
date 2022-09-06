@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Office Notice Board Config Panel</title>
+    <title>Office Notice Board Configuration</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,11 +28,22 @@
 
     <div class="container mt-5 mb-5 p-0 pb-5">
       <div class="row d-flex flex-column align-items-center">
-        <h1>Configure the notice board!</h1>
-        <p class="text-center pl-5 pr-5 pt-0 pb-0">Current State</p>
-        <form action="/send" method="POST">
-          <input type="text" name="newState" placeholder="Enter State" />
-          <input type="submit" value="Send State" />
+        <h1>Configuration</h1>
+        <br />
+        <form action="/send-state" method="POST">
+          <label for="lang">State: </label>
+          <select name="newState" id="lang">
+            <option value="0">Unknown</option>
+            <option value="1">Do Not Disturb</option>
+            <option value="2">Available</option>
+            <option value="3">Not Home</option>
+          </select>
+          <input type="submit" value="Send" />
+        </form>
+        <br />
+        <form action="/send-custom" method="POST">
+          <input type="text" name="customMessage" placeholder="Enter Custom Message" value="Bring me cookies :)" />
+          <input type="submit" value="Send" />
         </form>
       </div>
     </div>

@@ -2,32 +2,22 @@
 
 [Device in Dashboard](https://dashboard.balena-cloud.com/devices/135c5f281819ff31d8c1d3484460159a)
 
-## Todo
+Deploy locally with local mode: `balena push 135c5f2.local --env KIOSK=1 PERSISTENT=1 LAUNCH_URL='http://localhost:3000'`
 
-Software:
+## TODO
 
-- Nicely format config and display websites
-- Set five states in dropdown w/ text only to select between them
-  - Plus a custom message and image area
-- Cleanup code
-- Readme update
+- Persist state across reboots (store in docker volume?)
 - Figure out scheduler and backlight timer stuff
-
-With localmode enabled: `balena push 135c5f2.local --env KIOSK=1 PERSISTENT=1 LAUNCH_URL='http://localhost:3000'`
-
-Hardware & Mounting:
-
+- Show photo album rotation instead of balena logo (optional, fallback to balena logo)
 - LCD Screen: Weatherized and mounted right outside the guest house by the door.
-  - 3D printed case?
+  - 3D printed case or AMZ?
   - Power? – Solar Panel
-- Expense everything later in the year
-
-Post MVP:
-
 - Automatically detect if I'm in a conference call or not
-- If in a conference call, update the text so Camille knows if I'm in a meeting or she can come in
-- Start here? <https://github.com/henrik242/OnAir>
+  - Start here? <https://github.com/henrik242/OnAir>
+- Cleanup code
+- Readme updates
 - Blog post
+- Expense project materials after blog
 
 ## Highlights
 
@@ -54,9 +44,9 @@ KIOSK=1
 LAUNCH_URL=''
 PERSISTENT=1
 
-## `backend-server` service
+## `config-server` service
 
-## `sign-server` service
+## `display` service
 
 ## `browser` service
 

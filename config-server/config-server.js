@@ -24,6 +24,7 @@ app.use(function (req, res, next) {
 
 let stateID = 0;
 const states = ['Unknown', 'Here — Do not disturb', 'Here — available', 'Not here', 'Bring me cookies :)'];
+const colors = ['#f8fb61', '#fb6161', '#9df951', '#fb6161', '#9df951'];
 const dateFormat = {
   year: 'numeric',
   month: '2-digit',
@@ -43,7 +44,8 @@ app.get('/state', (req, res) => {
     JSON.stringify({
       stateID: stateID,
       text: states[stateID],
-      timestamp: new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }, dateFormat),
+      color: colors[stateID],
+      timestamp: `${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }, dateFormat)} (Online)`,
     })
   );
 });

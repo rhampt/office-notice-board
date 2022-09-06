@@ -2,8 +2,24 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 
+const dateFormat = {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+};
+
+const defaultState = {
+  stateID: 0,
+  text: 'Unknown',
+  color: '#f8fb61',
+  timestamp: `${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }, dateFormat)} (Offline)`,
+};
+
 function App() {
-  const [state, stateSet] = React.useState([{ stateID: -1, text: 'INIT', timestamp: 'NULL' }]);
+  const [state, stateSet] = React.useState([defaultState]);
 
   React.useEffect(() => {
     async function fetchState() {
@@ -12,11 +28,7 @@ function App() {
         const responseJson = await fullResponse.json();
         stateSet(responseJson);
       } catch {
-        stateSet({
-          stateID: -1,
-          text: 'Unable to connect to the config server',
-          timestamp: '',
-        });
+        stateSet(defaultState);
       }
     }
     const interval = setInterval(() => {
@@ -27,11 +39,11 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <p>{state.timestamp}</p>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{state.text}</p>
-      </header>
+      <p className="State" style={{ backgroundColor: state.color }}>
+        {state.text}
+      </p>
+      <img src={logo} className="App-logo" alt="logo" />
+      <p>{state.timestamp}</p>
     </div>
   );
 }

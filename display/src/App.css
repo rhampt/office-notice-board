@@ -1,5 +1,21 @@
 .App {
   text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: calc(10px + 3vmin);
+  color: white;
+}
+
+.State {
+  background-color: #f8fb61;
+  font-size: calc(10px + 6vmin);
+  border-radius: 25px;
+  color: #282c34;
+  padding: 20px;
 }
 
 .App-logo {
@@ -11,21 +27,6 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {

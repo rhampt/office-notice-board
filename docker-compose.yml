@@ -1,10 +1,15 @@
 version: '2'
+volumes:
+  settings:
+  state:
 services:
   config-server:
     build: ./config-server
     restart: always
     ports:
       - '80:80'
+    volumes:
+      - 'state:/data'
   display:
     build: ./display
     restart: always
@@ -15,11 +20,13 @@ services:
     restart: always
     privileged: true
     network_mode: host
+    volumes:
+      - 'settings:/data'
   fbcp:
     build: ./fbcp
     restart: on-failure
     privileged: true
-  # scheduler:
-  #   restart: always
-  #   build: ./scheduler
-  #   privileged: true
+  scheduler:
+    restart: always
+    build: ./scheduler
+    privileged: true

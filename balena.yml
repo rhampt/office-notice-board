@@ -22,7 +22,7 @@ data:
   applicationEnvironmentVariables:
     - KIOSK: 1
     - PERSISTENT: 1
-    - LAUNCH_URL: ''
+    - LAUNCH_URL: 'http://localhost:3000'
     - SHOW_CURSOR: 0
     - CONTROL_TV: 0
     - ENABLE_GPU: 0
@@ -31,7 +31,7 @@ data:
     - ACTIVITY_TIMEOUT: 600
     - ROTATE_DISPLAY: normal
     - WINDOW_POSITION: '0,0'
-    - LOCAL_HTTP_DELAY: 0
+    - LOCAL_HTTP_DELAY: 30
     - FBCP_DISPLAY: ''
   defaultDeviceType: raspberrypi4-64
   supportedDeviceTypes:

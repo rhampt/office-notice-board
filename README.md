@@ -2,16 +2,13 @@
 
 [Device in Dashboard](https://dashboard.balena-cloud.com/devices/135c5f281819ff31d8c1d3484460159a)
 
-Deploy locally with local mode: `balena push 135c5f2.local --env KIOSK=1 PERSISTENT=1 LAUNCH_URL='http://localhost:3000'`
-
 ## TODO
 
-- Persist state across reboots (store in docker volume?)
-- Figure out scheduler and backlight timer stuff
+- Figure out scheduler to turn backlight off after work and on in the morning
 - Show photo album rotation instead of balena logo (optional, fallback to balena logo)
 - LCD Screen: Weatherized and mounted right outside the guest house by the door.
   - 3D printed case or AMZ?
-  - Power? – Solar Panel
+  - Power? – Solar Panel?
 - Automatically detect if I'm in a conference call or not
   - Start here? <https://github.com/henrik242/OnAir>
 - Cleanup code
@@ -37,12 +34,6 @@ It may support others—please let me know if you test on another device!
 ## Equipment
 
 ## System Overview
-
-## Fleet Variables
-
-KIOSK=1
-LAUNCH_URL=''
-PERSISTENT=1
 
 ## `config-server` service
 

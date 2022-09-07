@@ -3,6 +3,7 @@ const express = require('express');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const app = express();
+const fs = require('fs');
 const PORT = 80;
 
 app.set('views', join(__dirname, 'views', 'public'));
@@ -22,8 +23,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-let stateID = 0;
-let customMessage = 'Bring me cookies :)';
 const states = ['Unknown', 'Do Not Disturb', 'Available', 'Not Home', 'Bring me cookies :)'];
 const colors = ['#f8fb61', '#fb6161', '#9df951', '#fb6161', '#9df951'];
 const dateFormat = {
@@ -34,6 +33,19 @@ const dateFormat = {
   minute: '2-digit',
   second: '2-digit',
 };
+
+let stateID;
+let customMessage;
+try {
+  const stateObj = JSON.parse(fs.readFileSync('/data/state.json'));
+  stateID = stateObj.stateID;
+  customMessage = stateObj.customMessage;
+  console.log('Restored state: ' + JSON.stringify(stateObj));
+} catch {
+  stateID = 0;
+  customMessage = 'Bring me cookies :)';
+  console.log('No previous state, setting to default');
+}
 
 app.get('/', function (req, res) {
   res.sendFile(join(__dirname, 'views', 'index.html'));
@@ -53,6 +65,7 @@ app.get('/state', (req, res) => {
 app.post('/send-state', function (req, res) {
   stateID = req.body.newState;
   console.log('State changed to: ' + states[stateID]);
+  fs.writeFileSync('/data/state.json', JSON.stringify({ stateID: stateID, customMessage: 'None' }));
   res.status(204).send('State changed to: ' + states[stateID]);
 });
 
@@ -60,6 +73,7 @@ app.post('/send-custom', function (req, res) {
   stateID = 4;
   customMessage = req.body.customMessage;
   console.log('State changed to: ' + customMessage);
+  fs.writeFileSync('/data/state.json', JSON.stringify({ stateID: stateID, customMessage: customMessage }));
   res.status(204).send('State changed to: ' + customMessage);
 });
 
